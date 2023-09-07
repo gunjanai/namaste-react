@@ -1,13 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom"
 
-const heading = React.createElement("h1", {id: "heading"}, "Hello world from react!");
+const reactElement = (
+    <h1>
+        Hello world from JSX!
+    </h1>
+)
 
-const nestedHeading = React.createElement("div", {id: "parent"}, [
-    React.createElement("div", {id: "child1"}, "This is child 1"),
-    React.createElement("div", {id: "child2"}, "This is child 2")
-])
+const FunctionalComponent = () => (<h1>Hello world from functional component!</h1>)
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const FunctionalComponent2 = () => {
+    return <h1>Hello world from functional component 2</h1>
+}
 
-root.render(nestedHeading)
+const ComponentComposition = () => {
+    return (
+        <>
+            <h1>This is component composition</h1>
+            <h2>See this code for different functional component calling ways</h2>
+            <FunctionalComponent />
+            <FunctionalComponent2></FunctionalComponent2>
+            {FunctionalComponent()}
+            {reactElement}
+        </>
+    )
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+
+root.render(<ComponentComposition />)
